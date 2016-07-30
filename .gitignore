@@ -1,6 +1,3 @@
-## generic files to ignore
-htultimate.iml
-/.idea
 .idea/
 *.iml
-**/target/
+target/
