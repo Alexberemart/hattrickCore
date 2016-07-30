@@ -1,6 +1,6 @@
 package alexberemart.hattrickCore.rest;
 
-import Alexberemart.core.rest.AbstractRestService;
+import com.alexberemart.core.rest.AbstractRestService;
 import alexberemart.hattrickCore.model.enums.MatchStatus;
 import alexberemart.hattrickCore.model.enums.MatchType;
 import com.google.inject.servlet.RequestScoped;
