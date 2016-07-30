@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,19 +6,16 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum PlayerAggressiveness {
+public enum MatchStatus {
 
-    UNSTABLE(5, "Unstable"),
-    FIERY(4, "Fiery"),
-    TEMPERAMENTAL(3, "Temperamental"),
-    BALANCED(2, "Balanced"),
-    CALM(1, "Calm"),
-    TRANQUIL(0, "Tranquil");
+    UPCOMING(0, "Upcoming"),
+    ONGOING(1, "Ongoing"),
+    FINISHED(2, "Finished");
 
     protected Integer value;
     protected String description;
 
-    PlayerAggressiveness(Integer code, String description) {
+    MatchStatus(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -41,22 +38,22 @@ public enum PlayerAggressiveness {
     }
 
     @JsonCreator
-    public static PlayerAggressiveness parse(Integer id) {
-        PlayerAggressiveness playerAggressiveness = null; // Default
-        for (PlayerAggressiveness item : PlayerAggressiveness.values()) {
+    public static MatchStatus parse(Integer id) {
+        MatchStatus matchStatus = null; // Default
+        for (MatchStatus item : MatchStatus.values()) {
             if (item.getValue().equals(id)) {
-                playerAggressiveness = item;
+                matchStatus = item;
                 break;
             }
         }
-        return playerAggressiveness;
+        return matchStatus;
     }
 
     public static Map asMap() {
-        PlayerAggressiveness[] values = PlayerAggressiveness.values();
+        MatchStatus[] values = MatchStatus.values();
         Map<Integer, String> result = new HashMap();
-        for (PlayerAggressiveness value1 : values) {
-            result.put(value1.getValue(), value1.getDescription());
+        for (int i = 0; i < values.length; i++) {
+            result.put(values[i].getValue(), values[i].getDescription());
         }
 
         return result;

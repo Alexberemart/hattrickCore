@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,17 +6,19 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Weather {
+public enum PlayerAggressiveness {
 
-    RAIN(0, "Rain"),
-    OVERCAST(1, "Overcast"),
-    PARTIALLY_CLOUDY(2, "Partially cloudy"),
-    SUNNY(3, "Sunny");
+    UNSTABLE(5, "Unstable"),
+    FIERY(4, "Fiery"),
+    TEMPERAMENTAL(3, "Temperamental"),
+    BALANCED(2, "Balanced"),
+    CALM(1, "Calm"),
+    TRANQUIL(0, "Tranquil");
 
     protected Integer value;
     protected String description;
 
-    Weather(Integer code, String description) {
+    PlayerAggressiveness(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -39,22 +41,22 @@ public enum Weather {
     }
 
     @JsonCreator
-    public static Weather parse(Integer id) {
-        Weather weather = null; // Default
-        for (Weather item : Weather.values()) {
+    public static PlayerAggressiveness parse(Integer id) {
+        PlayerAggressiveness playerAggressiveness = null; // Default
+        for (PlayerAggressiveness item : PlayerAggressiveness.values()) {
             if (item.getValue().equals(id)) {
-                weather = item;
+                playerAggressiveness = item;
                 break;
             }
         }
-        return weather;
+        return playerAggressiveness;
     }
 
     public static Map asMap() {
-        Weather[] values = Weather.values();
+        PlayerAggressiveness[] values = PlayerAggressiveness.values();
         Map<Integer, String> result = new HashMap();
-        for (int i = 0; i < values.length; i++) {
-            result.put(values[i].getValue(), values[i].getDescription());
+        for (PlayerAggressiveness value1 : values) {
+            result.put(value1.getValue(), value1.getDescription());
         }
 
         return result;

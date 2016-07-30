@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;

@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,16 +6,17 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum MatchStatus {
+public enum Weather {
 
-    UPCOMING(0, "Upcoming"),
-    ONGOING(1, "Ongoing"),
-    FINISHED(2, "Finished");
+    RAIN(0, "Rain"),
+    OVERCAST(1, "Overcast"),
+    PARTIALLY_CLOUDY(2, "Partially cloudy"),
+    SUNNY(3, "Sunny");
 
     protected Integer value;
     protected String description;
 
-    MatchStatus(Integer code, String description) {
+    Weather(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -38,19 +39,19 @@ public enum MatchStatus {
     }
 
     @JsonCreator
-    public static MatchStatus parse(Integer id) {
-        MatchStatus matchStatus = null; // Default
-        for (MatchStatus item : MatchStatus.values()) {
+    public static Weather parse(Integer id) {
+        Weather weather = null; // Default
+        for (Weather item : Weather.values()) {
             if (item.getValue().equals(id)) {
-                matchStatus = item;
+                weather = item;
                 break;
             }
         }
-        return matchStatus;
+        return weather;
     }
 
     public static Map asMap() {
-        MatchStatus[] values = MatchStatus.values();
+        Weather[] values = Weather.values();
         Map<Integer, String> result = new HashMap();
         for (int i = 0; i < values.length; i++) {
             result.put(values[i].getValue(), values[i].getDescription());

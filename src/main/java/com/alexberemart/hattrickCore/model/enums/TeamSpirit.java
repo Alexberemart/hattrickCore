@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,23 +6,24 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum SelfConfidence {
+public enum TeamSpirit {
 
-    NONEXISTENT(0, "non-existent"),
-    DISASTROURS(1, "disastrours"),
-    WRETCHED(2, "wretched"),
-    POOR(3, "poor"),
-    DECENT(4, "decent"),
-    STRONG(5, "strong"),
-    WONDERFUL(6, "wondeful"),
-    SLIGHTLY(7, "slightly exaggerated"),
-    EXAGGERATED(8, "exaggerated"),
-    COMPLETELY(9, "completely exaggerated");
+    COLDWAR(0, "like the Cold War"),
+    MURDEROUS(1, "murderous"),
+    FURIOUS(2, "furious"),
+    IRRITATED(3, "irritated"),
+    COMPOSED(4, "composed"),
+    CALM(5, "calm"),
+    CONTENT(6, "content"),
+    SATISFIED(7, "satisfied"),
+    DELIRIOUS(8, "delirious"),
+    WALKING(9, "walking on clouds"),
+    PARADISE(10, "Paradise on Earth!");
 
     protected Integer value;
     protected String description;
 
-    SelfConfidence(Integer code, String description) {
+    TeamSpirit(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -45,21 +46,21 @@ public enum SelfConfidence {
     }
 
     @JsonCreator
-    public static SelfConfidence parse(Integer id) {
-        SelfConfidence selfConfidence = null; // Default
-        for (SelfConfidence item : SelfConfidence.values()) {
+    public static TeamSpirit parse(Integer id) {
+        TeamSpirit teamSpirit = null; // Default
+        for (TeamSpirit item : TeamSpirit.values()) {
             if (item.getValue().equals(id)) {
-                selfConfidence = item;
+                teamSpirit = item;
                 break;
             }
         }
-        return selfConfidence;
+        return teamSpirit;
     }
 
     public static Map asMap() {
-        SelfConfidence[] values = SelfConfidence.values();
+        TeamSpirit[] values = TeamSpirit.values();
         Map<Integer, String> result = new HashMap();
-        for (SelfConfidence value1 : values) {
+        for (TeamSpirit value1 : values) {
             result.put(value1.getValue(), value1.getDescription());
         }
 

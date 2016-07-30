@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,24 +6,19 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum TeamSpirit {
+public enum PlayerHonesty {
 
-    COLDWAR(0, "like the Cold War"),
-    MURDEROUS(1, "murderous"),
-    FURIOUS(2, "furious"),
-    IRRITATED(3, "irritated"),
-    COMPOSED(4, "composed"),
-    CALM(5, "calm"),
-    CONTENT(6, "content"),
-    SATISFIED(7, "satisfied"),
-    DELIRIOUS(8, "delirious"),
-    WALKING(9, "walking on clouds"),
-    PARADISE(10, "Paradise on Earth!");
+    SAINTLY(5, "Saintly"),
+    RIGHTEOUS(4, "Righteous"),
+    UPRIGHT(3, "Upright"),
+    HONEST(2, "Honest"),
+    DISHONEST(1, "Dishonest"),
+    INFAMOUS(0, "Infamous");
 
     protected Integer value;
     protected String description;
 
-    TeamSpirit(Integer code, String description) {
+    PlayerHonesty(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -46,21 +41,21 @@ public enum TeamSpirit {
     }
 
     @JsonCreator
-    public static TeamSpirit parse(Integer id) {
-        TeamSpirit teamSpirit = null; // Default
-        for (TeamSpirit item : TeamSpirit.values()) {
+    public static PlayerHonesty parse(Integer id) {
+        PlayerHonesty playerHonesty = null; // Default
+        for (PlayerHonesty item : PlayerHonesty.values()) {
             if (item.getValue().equals(id)) {
-                teamSpirit = item;
+                playerHonesty = item;
                 break;
             }
         }
-        return teamSpirit;
+        return playerHonesty;
     }
 
     public static Map asMap() {
-        TeamSpirit[] values = TeamSpirit.values();
+        PlayerHonesty[] values = PlayerHonesty.values();
         Map<Integer, String> result = new HashMap();
-        for (TeamSpirit value1 : values) {
+        for (PlayerHonesty value1 : values) {
             result.put(value1.getValue(), value1.getDescription());
         }
 

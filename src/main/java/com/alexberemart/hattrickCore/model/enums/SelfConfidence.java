@@ -1,4 +1,4 @@
-package alexberemart.hattrickCore.model.enums;
+package com.alexberemart.hattrickCore.model.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
@@ -6,34 +6,23 @@ import org.codehaus.jackson.annotate.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum SkillLevel {
+public enum SelfConfidence {
 
     NONEXISTENT(0, "non-existent"),
-    DISASTROUS(1, "disastrous"),
+    DISASTROURS(1, "disastrours"),
     WRETCHED(2, "wretched"),
     POOR(3, "poor"),
-    WEAK(4, "weak"),
-    INADEQUATE(5, "inadequate"),
-    PASSABLE(6, "passable"),
-    SOLID(7, "solid"),
-    EXCELLENT(8, "excellent"),
-    FORMIDABLE(9, "formidable"),
-    OUTSTANDING(10, "outstanding"),
-    BRILLIANT(11, "brilliant"),
-    MAGNIFICENT(12, "magnificent"),
-    WORLDCLASS(13, "world class"),
-    SUPERNATURAL(14, "supernatural"),
-    TITANIC(15, "titanic"),
-    EXTRATERRESTRIAL(16, "extra-terrestrial"),
-    MYTHICAL(17, "mythical"),
-    MAGICAL(18, "magical"),
-    UTOPIAN(19, "utopian"),
-    DIVINE(20, "divine");
+    DECENT(4, "decent"),
+    STRONG(5, "strong"),
+    WONDERFUL(6, "wondeful"),
+    SLIGHTLY(7, "slightly exaggerated"),
+    EXAGGERATED(8, "exaggerated"),
+    COMPLETELY(9, "completely exaggerated");
 
     protected Integer value;
     protected String description;
 
-    SkillLevel(Integer code, String description) {
+    SelfConfidence(Integer code, String description) {
         this.value = code;
         this.description = description;
     }
@@ -56,21 +45,21 @@ public enum SkillLevel {
     }
 
     @JsonCreator
-    public static SkillLevel parse(Integer id) {
-        SkillLevel skillLevel = null; // Default
-        for (SkillLevel item : SkillLevel.values()) {
+    public static SelfConfidence parse(Integer id) {
+        SelfConfidence selfConfidence = null; // Default
+        for (SelfConfidence item : SelfConfidence.values()) {
             if (item.getValue().equals(id)) {
-                skillLevel = item;
+                selfConfidence = item;
                 break;
             }
         }
-        return skillLevel;
+        return selfConfidence;
     }
 
     public static Map asMap() {
-        SkillLevel[] values = SkillLevel.values();
+        SelfConfidence[] values = SelfConfidence.values();
         Map<Integer, String> result = new HashMap();
-        for (SkillLevel value1 : values) {
+        for (SelfConfidence value1 : values) {
             result.put(value1.getValue(), value1.getDescription());
         }
 
